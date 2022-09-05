@@ -1,5 +1,5 @@
 var h = 0; var m = 0; var s = 0;
-var interval; var saveTime;
+var interval; var saveTime = "00:00:00";
 
 function iniciar () {
     interval = setInterval (timer, 1000);
@@ -31,8 +31,12 @@ function pausar () {
 }
 
 function salvar () {
-    document.getElementById("time-save").innerHTML += `<li>${saveTime}</li>`;
-    document.getElementById("clean").style.display = "block";
+    if (saveTime == "00:00:00"){
+        alert("Inicie o Cronômetro antes de salvar")
+    } else {
+        document.getElementById("time-save").innerHTML += `<li>${saveTime}</li>`;
+        document.getElementById("clean").style.display = "block";
+    }
 }
 
 function limpar () {
@@ -43,5 +47,6 @@ function limpar () {
 function resetar () {
     clearInterval(interval);
     document.getElementById("timer").innerHTML = "00:00:00";
+    saveTime = "00:00:00";
     s = 0; m = 0; h = 0;
 }
